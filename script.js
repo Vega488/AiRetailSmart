@@ -2072,3 +2072,38 @@ Kue Semprong,26924,57,41,2026-04-30`;
     // Kasih notifikasi
     alert('Download dimulai! File "contoh_data_pasar.csv" akan tersimpan di folder download Anda.');
 }
+
+// ========== DOWNLOAD EXCEL PASTI JALAN ==========
+document.getElementById('excelButton').addEventListener('click', function() {
+    // Data dalam bentuk array 2D
+    const data = [
+        ["nama_produk", "harga_jual", "stok", "terjual", "tanggal"],
+        ["Pempek Lenjer Pack", 62572, 78, 38, "2026-04-01"],
+        ["Keripik Singkong Pedas", 14463, 118, 20, "2026-04-01"],
+        ["Cokelat Kurma", 60503, 144, 25, "2026-04-01"],
+        ["Kopi Bubuk Robusta", 43440, 102, 9, "2026-04-01"],
+        ["Siomay Ikan Frozen", 42097, 81, 34, "2026-04-01"],
+        ["Telur Asin Brebes", 6611, 134, 41, "2026-04-04"],
+        ["Kue Semprong", 29593, 130, 42, "2026-04-04"],
+        ["Dendeng Sapi Balado", 81594, 90, 39, "2026-04-02"],
+        ["Rendang Daging Kemasan", 84671, 55, 25, "2026-04-02"],
+        ["Abon Sapi Solo", 64368, 106, 38, "2026-04-07"]
+    ];
+    
+    // Buat worksheet
+    var ws = XLSX.utils.aoa_to_sheet(data);
+    
+    // Atur lebar kolom
+    ws['!cols'] = [
+        {wch: 25},
+        {wch: 12},
+        {wch: 8},
+        {wch: 10},
+        {wch: 12}
+    ];
+    
+    // Buat workbook dan download
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Data Penjualan");
+    XLSX.writeFile(wb, "contoh_data.xlsx");
+});

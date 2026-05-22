@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
     <!-- SheetJS untuk baca Excel -->
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 </head>
@@ -63,7 +64,7 @@
         <!-- MAIN CONTENT -->
         <main class="main-content">
             <!-- TOP NAVBAR -->
-            <header class="top-navbar">
+            <header class="top-navbar" style="background: white; border-radius: 20px; padding: 16px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                 <div class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -154,14 +155,17 @@
                         </table>
                     </div>
                 </div>
+                
                 <!-- Tombol Download Contoh File -->
                 <div style="margin-top: 15px; text-align: left;">
                     <button onclick="downloadContohData()" style="background-color: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
                         <i class="fas fa-download"></i> Download Contoh File CSV
                     </button>
-                    <p style="font-size: 12px; color: #64748b; margin-top: 8px;">Belum punya data? Download contoh file di atas</p>
                 </div>
-
+                <!-- Tombol Download Contoh File Excel -->
+                <button id="btnDownloadFullExcel" style="background-color: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 10px;">
+                    <i class="fas fa-file-excel"></i> Download Contoh Excel (Lengkap 175 Data)
+                </button>
             </div>
 
                         <!-- TAB ANALYTICS (GRAFIK) -->
