@@ -154,58 +154,57 @@
                         </table>
                     </div>
                 </div>
+                <!-- Tombol Download Contoh File -->
+                <div style="margin-top: 15px; text-align: left;">
+                    <button onclick="downloadContohData()" style="background-color: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                        <i class="fas fa-download"></i> Download Contoh File CSV
+                    </button>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 8px;">Belum punya data? Download contoh file di atas</p>
+                </div>
+
             </div>
 
-           <!-- Tombol Download Contoh File -->
-<!-- Tombol Download Contoh File -->
-<div style="margin-top: 15px; text-align: left;">
-    <button onclick="downloadContohData()" style="background-color: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px;">
-        <i class="fas fa-download"></i> Download Contoh File CSV
-    </button>
-    <p style="font-size: 12px; color: #64748b; margin-top: 8px;">Belum punya data? Download contoh file di atas</p>
-</div>
+                        <!-- TAB ANALYTICS (GRAFIK) -->
+                        <div id="analytics-tab" class="tab-content">
+                            <h2 class="section-title"><i class="fas fa-chart-line"></i> Visualisasi Analytics</h2>
+                            <div class="charts-grid">
+                                <div class="chart-card">
+                                    <h4>Penjualan Harian</h4>
+                                    <canvas id="salesChart"></canvas>
+                                </div>
+                                <div class="chart-card">
+                                    <h4>Stok Produk</h4>
+                                    <canvas id="stockChart"></canvas>
+                                </div>
+                                <div class="chart-card">
+                                    <h4>Tren Harga vs Penjualan</h4>
+                                    <canvas id="priceTrendChart"></canvas>
+                                </div>
+                                <div class="chart-card">
+                                    <h4>Demand Forecasting</h4>
+                                    <canvas id="forecastChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- TAB ANALYTICS (GRAFIK) -->
-            <div id="analytics-tab" class="tab-content">
-                <h2 class="section-title"><i class="fas fa-chart-line"></i> Visualisasi Analytics</h2>
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h4>Penjualan Harian</h4>
-                        <canvas id="salesChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h4>Stok Produk</h4>
-                        <canvas id="stockChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h4>Tren Harga vs Penjualan</h4>
-                        <canvas id="priceTrendChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h4>Demand Forecasting</h4>
-                        <canvas id="forecastChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-           <!-- TAB FORECASTING - VERSI LEBIH BAGUS -->
-<div id="forecast-tab" class="tab-content">
-    <h2 class="section-title"><i class="fas fa-chart-simple"></i> AI Forecasting & Rekomendasi Restock</h2>
-    
-    <!-- Layout Grid 2 Kolom -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-        
-        <!-- KIRI: Prediksi Demand -->
-        <div class="forecast-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 20px; padding: 24px; color: white;">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                <div style="background: rgba(59,130,246,0.2); padding: 12px; border-radius: 16px;">
-                    <i class="fas fa-chart-line" style="font-size: 28px; color: #3b82f6;"></i>
-                </div>
-                <div>
-                    <h3 style="margin: 0; font-size: 18px; color: #94a3b8;">PREDIKSI DEMAND</h3>
-                    <p style="margin: 0; font-size: 13px; color: #64748b;">Weighted Moving Average</p>
-                </div>
-            </div>
+                    <!-- TAB FORECASTING - VERSI LEBIH BAGUS -->
+            <div id="forecast-tab" class="tab-content">
+                <h2 class="section-title"><i class="fas fa-chart-simple"></i> AI Forecasting & Rekomendasi Restock</h2>
+                
+                <!-- Layout Grid 2 Kolom -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    
+                    <!-- KIRI: Prediksi Demand -->
+                    <div class="forecast-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 20px; padding: 24px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="background: rgba(59,130,246,0.2); padding: 12px; border-radius: 16px;">
+                                <i class="fas fa-chart-line" style="font-size: 28px; color: #3b82f6;"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 18px; color: #94a3b8;">PREDIKSI DEMAND</h3>
+                                <p style="margin: 0; font-size: 13px; color: #64748b;">Weighted Moving Average</p>
+                            </div>
+                        </div>
             
             <div id="demandPredictionText" style="margin-bottom: 20px;">
                 <!-- Isi dari JavaScript -->
