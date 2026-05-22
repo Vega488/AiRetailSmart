@@ -2107,3 +2107,22 @@ document.getElementById('excelButton').addEventListener('click', function() {
     XLSX.utils.book_append_sheet(wb, ws, "Data Penjualan");
     XLSX.writeFile(wb, "contoh_data.xlsx");
 });
+
+// Tombol menu untuk HP
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+    });
+}
+
+// Tutup sidebar saat klik di luar (opsional)
+document.addEventListener('click', function(e) {
+    if (sidebar && sidebar.classList.contains('open')) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('open');
+        }
+    }
+});
