@@ -1443,7 +1443,7 @@ function runPriceWarSimulation(productName) {
             <i class="fas fa-chart-line"></i> Berdasarkan analisis elastisitas harga (${elasticity.toFixed(1)}), produk ini memiliki sensitivitas ${Math.abs(elasticity) > 1 ? 'tinggi' : 'rendah'} terhadap perubahan harga.
         </div>
     `;
-    
+
     // Tambahkan event click ke card scenario untuk highlight
     document.querySelectorAll('#scenarioDown, #scenarioStable, #scenarioUp').forEach(el => {
         el.addEventListener('click', () => {
@@ -2107,16 +2107,6 @@ document.getElementById('excelButton').addEventListener('click', function() {
     XLSX.utils.book_append_sheet(wb, ws, "Data Penjualan");
     XLSX.writeFile(wb, "contoh_data.xlsx");
 });
-
-// Tombol menu untuk HP
-const menuToggle = document.querySelector('.menu-toggle');
-const sidebar = document.querySelector('.sidebar');
-
-if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('open');
-    });
-}
 
 // Tutup sidebar saat klik di luar (opsional)
 document.addEventListener('click', function(e) {
