@@ -2079,11 +2079,160 @@ if (menuToggle) {
     });
 }
 
+// ========== COMPUTER VISION ==========
+
+// Cek koneksi server
+async function checkCVServer() {
+    const statusEl = document.getElementById('cvServerStatus');
+    try {
+        const response = await fetch('http://localhost:5000/health', {
+            method: 'GET',
+            signal: AbortSignal.timeout(2000)
+        });
+        if (response.ok) {
+            statusEl.textContent = '● Server terhubung (YOLO siap)';
+            statusEl.className = 'online';
+        } else {
+            statusEl.textContent = '● Server error';
+            statusEl.className = 'offline';
+        }
+    } catch (error) {
+        statusEl.textContent = '● Server tidak terhubung';
+        statusEl.className = 'offline';
+    }
+}
+
+// Panggil cek server saat tab Computer Vision dibuka
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+        if (this.dataset.tab === 'computervision') {
+            checkCVServer();
+        }
+    });
+});
+
+// Deteksi objek
+document.getElementById('cvDetectBtn').addEventListener('click', async function() {
+    const fileInput = document.getElementById('cvImageInput');
+    const statusEl = document.getElementById('cvStatus');
+    const resultEl = document.getElementById('cvResult');
+    const contentEl = document.getElementById('cvResultContent');
+    
+    if (!fileInput.files || fileInput.files.length === 0) {
+        statusEl.innerHTML = '<span style="color: #ef4444;">⚠️ Upload gambar terlebih dahulu!</span>';
+        return;
+    }
+    
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    
+    statusEl.innerHTML = '<span style="color: #3b82f6;">⏳ Memproses deteksi...</span>';
+    this.disabled = true;
+    
+    try {
+        const response = await fetch('http://localhost:5000/detect', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+            statusEl.innerHTML = `<span style="color: #ef4444;">❌ ${data.error}</span>`;
+            return;
+        }
+        
+        // Tampilkan hasil
+        resultEl.style.display = 'block';
+        
+        let html = `<div style="margin-bottom: 12px;"><strong>📷 Gambar yang dideteksi:</strong></div>`;
+        html += `<img src="data:image/png;base64,${data.image}" alt="Hasil Deteksi">`;
+        
+        html += `<div style="margin-top: 12px;"><strong>✅ Ditemukan ${data.objects.length} objek:</strong></div>`;
+        html += `<div style="display: flex; flex-direction: column; gap: 6px; margin-top: 8px;">`;
+        
+        data.objects.forEach(obj => {
+            html += `
+                <div class="cv-object-item">
+                    <span class="label">${obj.label}</span>
+                    <span class="confidence">${obj.confidence}%</span>
+                </div>
+            `;
+        });
+        
+        html += `</div>`;
+        contentEl.innerHTML = html;
+        statusEl.innerHTML = `<span style="color: #10b981;">✅ Deteksi selesai!</span>`;
+        
+    } catch (error) {
+        statusEl.innerHTML = `<span style="color: #ef4444;">❌ Gagal terhubung ke server. Pastikan server Python berjalan.</span>`;
+        console.error('Error:', error);
+    } finally {
+        this.disabled = false;
+    }
+});
+
+// Preview gambar sebelum upload
+document.getElementById('cvImageInput').addEventListener('change', function() {
+    const statusEl = document.getElementById('cvStatus');
+    if (this.files && this.files.length > 0) {
+        statusEl.innerHTML = `<span style="color: #10b981;">📎 ${this.files[0].name} siap diupload</span>`;
+    }
+});
+
+// Cek server saat halaman pertama kali dimuat
+setTimeout(checkCVServer, 1000);
+
 // Tutup sidebar saat klik di luar (opsional)
 document.addEventListener('click', function(e) {
     if (sidebar && sidebar.classList.contains('open')) {
         if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
             sidebar.classList.remove('open');
         }
+    }
+});
+
+// ===============================
+// TELEGRAM AI
+// ===============================
+
+document.addEventListener('DOMContentLoaded', function () {
+    const telegramTab = document.querySelector('[data-tab="telegram"]');
+    if (telegramTab) {
+        telegramTab.addEventListener('click', function () {
+            console.log('📱 Telegram AI tab opened');
+        });
+    }
+
+    // Animasi fitur saat muncul
+    const features = document.querySelectorAll('.telegram-feature');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    features.forEach((f, i) => {
+        f.style.opacity = '0';
+        f.style.transform = 'translateY(20px)';
+        f.style.transition = 'all 0.4s ease';
+        observer.observe(f);
+    });
+
+    // Tombol Telegram hover effect tambahan
+    const btn = document.querySelector('.telegram-btn');
+    if (btn) {
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.03)';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1)';
+        });
     }
 });
