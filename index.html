@@ -50,6 +50,14 @@
                     <i class="fas fa-lightbulb"></i>
                     <span>AI Insights</span>
                 </a>
+                <a href="#" class="nav-item" data-tab="computervision">
+                    <i class="fas fa-eye"></i>
+                    <span>Computer Vision</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Telegram AI</span>
+                </a>
 
             </nav>
             <div class="sidebar-footer">
@@ -702,10 +710,78 @@
         </div>
     </div>
     
+    
     <!-- Loading State -->
     <div id="simulationLoading" style="text-align: center; padding: 60px; background: white; border-radius: 20px;">
         <i class="fas fa-spinner fa-spin" style="font-size: 48px; color: #3b82f6;"></i>
         <p style="margin-top: 16px;">Memuat data...</p>
+    </div>
+</div>
+
+        <!-- TAB TELEGRAM AI -->
+<div id="telegram-tab" class="tab-content">
+    <h2 class="section-title"><i class="fab fa-telegram-plane"></i> Telegram AI Assistant</h2>
+
+    <!-- HERO -->
+    <div class="telegram-hero">
+        <div class="telegram-hero-icon">
+            <i class="fab fa-telegram-plane"></i>
+        </div>
+        <h2>Chat dengan AI via Telegram</h2>
+        <p>Asisten cerdas untuk manajemen stok & penjualan</p>
+        <a href="https://t.me/budakin_bot" target="_blank" class="telegram-btn">
+            <i class="fab fa-telegram-plane"></i> Buka Telegram Sekarang
+        </a>
+    </div>
+
+    <!-- STATUS BOT -->
+    <div class="telegram-status">
+        <span class="status-dot"></span>
+        <span><strong>@SentraSegarBot</strong> — Online 24 Jam</span>
+    </div>
+
+    <!-- FITUR GRID -->
+    <div class="telegram-features">
+        <div class="telegram-feature">
+            <div class="tf-icon" style="background:#dbeafe;color:#2563eb;"><i class="fas fa-robot"></i></div>
+            <h4>AI Chatbot</h4>
+            <p>Tanya stok, harga, rekomendasi</p>
+        </div>
+        <div class="telegram-feature">
+            <div class="tf-icon" style="background:#d1fae5;color:#059669;"><i class="fas fa-bell"></i></div>
+            <h4>Notifikasi</h4>
+            <p>Alert stok menipis & overstock</p>
+        </div>
+        <div class="telegram-feature">
+            <div class="tf-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-chart-line"></i></div>
+            <h4>Laporan Harian</h4>
+            <p>Ringkasan penjualan otomatis</p>
+        </div>
+        <div class="telegram-feature">
+            <div class="tf-icon" style="background:#ede9fe;color:#7c3aed;"><i class="fas fa-history"></i></div>
+            <h4>Riwayat Chat</h4>
+            <p>Akses data kapan saja</p>
+        </div>
+    </div>
+
+    <!-- CARA PAKAI -->
+    <div class="telegram-guide">
+        <h3><i class="fas fa-info-circle"></i> Cara Menggunakan</h3>
+        <ol>
+            <li>Klik <strong>"Buka Telegram Sekarang"</strong></li>
+            <li>Cari bot <strong>@Warung AlFaiqa</strong></li>
+            <li>Kirim <strong>/start</strong> untuk memulai</li>
+            <li>Tanyakan stok, harga, atau rekomendasi</li>
+        </ol>
+    </div>
+
+    <!-- LINK BOT -->
+    <div class="telegram-link">
+        <p><i class="fab fa-telegram-plane"></i> Link Bot Telegram</p>
+        <a href="https://t.me/budakin_bot" target="_blank">
+            https://t.me/budakin_bot
+        </a>
+        <small>Klik untuk langsung buka bot</small>
     </div>
 </div>
         </main>
@@ -804,7 +880,9 @@
             <button id="closeProfileModal" style="background: #f1f5f9; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">Tutup</button>
         </div>
     </div>
+    
 </div>
+
 
 <style>
     @keyframes slideUp {
@@ -818,5 +896,6 @@
         }
     }
 </style>
+</div>
 </body>
 </html>
